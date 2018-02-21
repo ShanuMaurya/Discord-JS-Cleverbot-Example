@@ -8,8 +8,9 @@ const clbot = new Cleverbot;
 clbot.configure({botapi: "YOUR API KEY HERE, CHECK README.MD"});
 
 // This will make the bot reply when it gets mentioned.
+// (Thanks to GeopJr for the `message.content.includes` part!
 client.on("message", (message) => {
-  if (message.content.startsWith("<@REPLACE WITH YOUR BOT ID>")) {
+  if (message.content.includes("<@REPLACE WITH YOUR BOT ID>")) {
     clbot.write(message.content, (response) => {
       message.channel.startTyping();
       setTimeout(() => {
